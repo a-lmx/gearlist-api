@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  scope "/api" do
-    resources :items, only: [:index]
+  namespace :api do
+    namespace :v1 do
+      resources :items, only: [:index]
+    end
   end
+  # scope "/api" do
+  # end
 end
