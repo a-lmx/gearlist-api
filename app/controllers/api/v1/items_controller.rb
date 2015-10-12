@@ -4,6 +4,11 @@ module Api
       def index
         render json: Item.all, status: :ok
       end
+
+      def show
+        item = Item.find(params[:id])
+        render json: item
+      end
     end
   end
 end
