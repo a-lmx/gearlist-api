@@ -5,30 +5,30 @@
 MVP
 
 - list of users lists
-get '/users/:id/lists'
+  - get '/users/:id/lists'
 
 - list of items in a list
-get '/lists/:id/items'
+  - get '/lists/:id/items'
 
 - create new list
-post '/lists'
+  - post '/lists'
 
 - add items to list
-post '/list_items'
+  - post '/list_items'
 
 - create new item
-post '/items'
+  - post '/items'
 
 - remove item from list
-delete '/list_items/:id'
+  - delete '/list_items/:id'
 
 ADD LATER
 
 - delete list
-delete '/lists/:id'
+  - delete '/lists/:id'
 
 - delete item
-delete '/items/:id'
+  - delete '/items/:id'
 
 - update item
-put/patch '/items/:id'
+  - put/patch '/items/:id'
