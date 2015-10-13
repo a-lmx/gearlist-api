@@ -64,3 +64,52 @@ lists = [
 lists.each do |list|
   List.create(list)
 end
+
+list_items = [
+  { item_id: 1,
+    list_id: 1,
+    quantity: 1 },
+  { item_id: 3,
+    list_id: 1,
+    quantity: 1 },
+  { item_id: 5,
+    list_id: 1,
+    quantity: 1 },
+  { item_id: 8,
+    list_id: 1,
+    quantity: 1 },
+  { item_id: 6,
+    list_id: 1,
+    quantity: 1 },
+  { item_id: 7,
+    list_id: 3,
+    quantity: 1 },
+  { item_id: 1,
+    list_id: 3,
+    quantity: 1 },
+  { item_id: 2,
+    list_id: 3,
+    quantity: 1 },
+  { item_id: 3,
+    list_id: 3,
+    quantity: 1 },
+  { item_id: 4,
+    list_id: 3,
+    quantity: 1 },
+  { item_id: 10,
+    list_id: 3,
+    quantity: 1 },
+  { item_id: 9,
+    list_id: 3,
+    quantity: 1 },
+  { item_id: 8,
+    list_id: 3,
+    quantity: 1 },
+  { item_id: 6,
+    list_id: 3,
+    quantity: 1 }
+]
+
+list_items.each do |list_item|
+  ListItem.create(list_item)
+end
