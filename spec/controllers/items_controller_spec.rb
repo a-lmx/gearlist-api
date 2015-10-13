@@ -9,7 +9,8 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       item2 = create :item, name: "burn"
 
       get :index
-      @items = JSON.parse response.body
+      items_wrapper = JSON.parse response.body
+      @items = items_wrapper["items"]
     end
 
     it "returns http success" do
@@ -30,9 +31,7 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
           "id",
           "name", 
           "category", 
-          "weight",
-          "created_at",
-          "updated_at"
+          "weight"
           ]
       end
     end
