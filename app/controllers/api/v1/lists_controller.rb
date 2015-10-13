@@ -2,10 +2,14 @@ module Api
   module V1
     class ListsController < ApplicationController
       def index
-        user = User.find(params[:user_id])
-        lists = List.where(user: user)
+        if params[:user_id]
+          user = User.find(params[:user_id]) 
+          lists = user.lists
+        else
+          lists = List.all
+        end
 
-        render json: { lists: lists }
+        render json: lists, status: :ok
       end
 
       def show
