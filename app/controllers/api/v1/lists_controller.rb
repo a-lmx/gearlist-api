@@ -3,8 +3,9 @@ module Api
     class ListsController < ApplicationController
       def index
         user = User.find(params[:user_id])
-        
-        render json: List.where(user: user)
+        lists = List.where(user: user)
+
+        render json: { lists: lists }
       end
     end
   end
