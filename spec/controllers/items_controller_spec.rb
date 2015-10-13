@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Api::V1::ItemsController, type: :controller do
 
   describe "GET #index" do
-
     before :each do
       item1 = create :item, name: "circuit"
       item2 = create :item, name: "burn"
@@ -38,11 +37,30 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
   end
 
   describe "GET #show" do
-    let(:item) { create :item }
+    before :each do
+      item1 = create :item
+      get :show, id: item1.id
+
+      @item = JSON.parse response.body
+    end
 
     it "returns http success" do
-      get :show, id: item.id
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status :success
+    end
+
+    context "the returned JSON object" do
+      it "has an `item` wrapper" do
+        expect(@item.keys).to eq ["item"]
+      end
+
+      it "includes id, name, category, and weight" do
+        expect(@item["item"].keys).to eq [
+          "id",
+          "name", 
+          "category", 
+          "weight"
+          ]
+      end
     end
   end
 
