@@ -22,7 +22,7 @@ module Api
       def create
         List.create(list_params)
 
-        render json: { message: "You created a list." }
+        render json: { message: "You created a list." }, status: 204
       end
 
       private
