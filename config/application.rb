@@ -22,5 +22,16 @@ module GearlistApi
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Enable cross-origin resource sharing
+    config.middleware.insert_before 'Rack::Runtime', 'Rack::Cors' do
+      allow do
+        origins '*'
+        resource '*',
+          headers: :any,
+          methods: [:get, :put, :post, :patch, :delete, :options]         
+      end
+    end
+
   end
 end
