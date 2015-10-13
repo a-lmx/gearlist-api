@@ -7,8 +7,9 @@ MVP
 - list of users lists
   - get '/users/:id/lists'
 
-- list of items in a list
-  - get '/lists/:id/items'
+- Information about a list
+  - get '/lists/:id/'
+  - or get 'lists/:id/items' ?
 
 - create new list
   - post '/lists'
