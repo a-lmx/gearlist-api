@@ -4,6 +4,9 @@
 
 MVP
 
+- user info
+  - get '/users/:id'
+
 - list of users lists
   - get '/users/:id/lists'
 
