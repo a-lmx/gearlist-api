@@ -5,6 +5,13 @@ module Api
         render json: Item.all, status: :ok
       end
 
+      # def by_list
+      #   list = List.find(params[:list_id])
+      #   items = list.items
+
+      #   render json: { list: list, items: items }
+      # end
+
       def show
         item = Item.find(params[:id])
         render json: item

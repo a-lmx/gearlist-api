@@ -7,6 +7,13 @@ module Api
 
         render json: { lists: lists }
       end
+
+      def show
+        list = List.find(params[:id])
+        items = list.items
+
+        render json: { list: list, items: items }
+      end
     end
   end
 end
