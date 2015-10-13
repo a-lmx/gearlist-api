@@ -4,19 +4,17 @@ module Api
       def index
         if params[:user_id]
           user = User.find(params[:user_id]) 
-          lists = user.lists
+          @lists = user.lists
         else
-          lists = List.all
+          @lists = List.all
         end
 
-        render json: lists, status: :ok
+        render json: @lists, status: :ok
       end
 
       def show
-        list = List.find(params[:id])
-        items = list.items
-
-        render json: { list: list, items: items }
+        @list = List.find(params[:id])
+        render json: @list
       end
 
       def create
