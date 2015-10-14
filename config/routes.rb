@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
       resources :lists, only: [:index, :show, :create] do
         resources :items, only: [:index]
+        resources :list_items, only: [:index]
       end
 
       resources :items, only: [:create, :index, :show]
