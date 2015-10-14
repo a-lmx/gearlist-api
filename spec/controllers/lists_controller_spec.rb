@@ -42,7 +42,7 @@ RSpec.describe Api::V1::ListsController, type: :controller do
         list1 = create :list, name: "JMT", user_id: user.id
         list2 = create :list, name: "PCT", user_id: user.id + 1
 
-        get :index
+        get :index, user_id: user.id
         lists_wrapper = JSON.parse response.body
         @lists = lists_wrapper["lists"]
       end
