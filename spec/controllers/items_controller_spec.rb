@@ -64,4 +64,27 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
     end
   end
 
+  describe "POST #create" do
+    let(:valid_params) { 
+      {
+        name: "Foo", 
+        category: "bar", 
+        weight: 10
+        } 
+      }
+
+    before :each do
+      @old_count = Item.count
+      post 'create', item: valid_params
+    end
+
+    it "returns http success" do
+      expect(response).to have_http_status(:success)
+    end
+
+    it "adds 1 to the number of Items" do
+      expect(Item.count).to eq(@old_count + 1)
+    end
+  end
+
 end
