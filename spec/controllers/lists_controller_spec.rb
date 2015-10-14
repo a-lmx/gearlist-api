@@ -51,9 +51,11 @@ RSpec.describe Api::V1::ListsController, type: :controller do
         expect(response).to have_http_status(:success)
       end
 
-      it "only shows the lists for that user" do
-        list_count = List.where(user_id: user.id).length
-        expect(@lists.length).to eq(list_count)
+      context "the returned JSON object" do
+        it "only shows the lists for that user" do
+          list_count = List.where(user_id: user.id).length
+          expect(@lists.length).to eq(list_count)
+        end
       end
     end
   end
