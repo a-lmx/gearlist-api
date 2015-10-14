@@ -16,6 +16,18 @@ module Api
         list_item = ListItem.find(params[:id])
         render json: list_item
       end
+
+      def create
+        ListItem.create(list_item_params)
+
+        render json: { message: "You created a list_item." }, status: 204
+      end
+
+      private
+
+      def list_item_params
+        params.require(:list_item).permit(:list_id, :item_id, :quantity)
+      end
     end
   end
 end
