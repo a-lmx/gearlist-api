@@ -89,4 +89,20 @@ RSpec.describe Api::V1::ListItemsController, type: :controller do
     end
   end
 
+  describe "DELETE #destroy" do
+    before :each do
+      @list_item = create :list_item
+      @old_count = ListItem.count
+
+      delete 'destroy', id: @list_item.id
+    end
+
+    it "returns http success" do
+      expect(response).to have_http_status(:success)
+    end
+
+    it "deletes 1 from the number of ListItems" do
+      expect(ListItem.count).to eq(@old_count - 1)
+    end
+  end
 end
