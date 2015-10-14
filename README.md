@@ -10,8 +10,11 @@ MVP
 - list of users lists
   - get '/users/:id/lists'
 
+- list info
+  - get '/lists/:id'
+
 - the items in a list
-  - get 'lists/:id/items'
+  - get '/lists/:id/items'
 
 - create new list
   - post '/lists'
