@@ -23,6 +23,13 @@ module Api
         render json: { message: "You created a list_item." }, status: 204
       end
 
+      def destroy
+        list_item = ListItem.find_by(id: params[:id])
+        list_item.destroy
+
+        render json: { message: "You destroyed a list_item.", status: 204 }
+      end
+
       private
 
       def list_item_params
