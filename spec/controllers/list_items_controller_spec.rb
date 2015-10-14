@@ -65,4 +65,28 @@ RSpec.describe Api::V1::ListItemsController, type: :controller do
       end
     end
   end
+
+  describe "POST #create" do
+    let(:valid_params) { 
+      {
+        list_id: 1, 
+        item_id: 3, 
+        quantity: 10
+        } 
+      }
+
+    before :each do
+      @old_count = ListItem.count
+      post 'create', list_item: valid_params
+    end
+
+    it "returns http success" do
+      expect(response).to have_http_status(:success)
+    end
+
+    it "adds 1 to the number of ListItems" do
+      expect(ListItem.count).to eq(@old_count + 1)
+    end
+  end
+
 end
