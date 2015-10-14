@@ -1,37 +1,64 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::ItemsController, type: :controller do
-
   describe "GET #index" do
-    before :each do
-      item1 = create :item, name: "circuit"
-      item2 = create :item, name: "burn"
+    context "no list_id" do
+      before :each do
+        item1 = create :item, name: "circuit"
+        item2 = create :item, name: "burn"
 
-      get :index
-      items_wrapper = JSON.parse response.body
-      @items = items_wrapper["items"]
-    end
-
-    it "returns http success" do
-      expect(response).to have_http_status(:success)
-    end
-
-    context "the returned JSON object" do
-      it "is an array" do
-        expect(@items).to be_an_instance_of Array
+        get :index
+        items_wrapper = JSON.parse response.body
+        @items = items_wrapper["items"]
       end
 
-      it "is equal in length to the number of Items in the db" do
-        expect(@items.length).to eq(Item.count)
+      it "returns http success" do
+        expect(response).to have_http_status(:success)
       end
 
-      it "includes name, category, and weight" do
-        expect(@items.first.keys).to eq [
-          "id",
-          "name", 
-          "category", 
-          "weight"
-          ]
+      context "the returned JSON object" do
+        it "is an array" do
+          expect(@items).to be_an_instance_of Array
+        end
+
+        it "is equal in length to the number of Items in the db" do
+          expect(@items.length).to eq(Item.count)
+        end
+
+        it "includes name, category, and weight" do
+          expect(@items.first.keys).to eq [
+            "id",
+            "name", 
+            "category", 
+            "weight"
+            ]
+        end
+      end
+    end
+
+    context "has list_id" do
+      let(:list) { create :list }
+      before :each do
+        item1 = create :item, name: "circuit"
+        item2 = create :item, name: "burn"
+
+        list_item1 = create :list_item, item_id: item1.id, list_id: list.id
+        list_item2 = create :list_item, item_id: item2.id, list_id: list.id + 1
+
+        get :index, list_id: list.id
+        items_wrapper = JSON.parse response.body
+        @items = items_wrapper["items"]
+      end
+
+      it "returns http success" do
+        expect(response).to have_http_status(:success)
+      end
+
+      context "the returned JSON object" do
+        it "only shows the items for that list" do
+          item_count = list.items.count
+          expect(@items.length).to eq(item_count)
+        end
       end
     end
   end
