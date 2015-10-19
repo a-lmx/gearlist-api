@@ -89,7 +89,7 @@ list_items = [
   { item_id: 7,
     list_id: 3,
     quantity: 1,
-    section: "clothing packed" },
+    section: "clothing - packed" },
   { item_id: 1,
     list_id: 3,
     quantity: 1,
@@ -113,7 +113,7 @@ list_items = [
   { item_id: 9,
     list_id: 3,
     quantity: 1,
-    section: "clothing - worn " },
+    section: "clothing - worn" },
   { item_id: 8,
     list_id: 3,
     quantity: 1,
@@ -127,3 +127,20 @@ list_items = [
 list_items.each do |list_item|
   ListItem.create(list_item)
 end
+
+sections = [
+  { name: "packing" },
+  { name: "kitchen" },
+  { name: "shelter \& sleeping" },
+  { name: "clothing - worn" },
+  { name: "clothing - packed" },
+  { name: "survival \& tools" },
+  { name: "hygiene" },
+  { name: "luxury" }
+]
+
+sections.each do |section|
+  Section.create(section)
+end
+
+
