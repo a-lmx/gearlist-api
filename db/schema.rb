@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20151012210736) do
     t.integer  "item_id"
     t.integer  "list_id"
     t.integer  "quantity"
+    t.string   "section"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
