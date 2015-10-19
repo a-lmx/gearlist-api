@@ -4,7 +4,7 @@ class CreateListItems < ActiveRecord::Migration
       t.integer :item_id
       t.integer :list_id
       t.integer :quantity
-      t.string :section
+      t.integer :section_id
 
       t.timestamps null: false
     end
