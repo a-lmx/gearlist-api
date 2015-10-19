@@ -6,10 +6,13 @@ Rails.application.routes.draw do
       end
 
       resources :lists, only: [:index, :show, :create] do
-        resources :items, only: [:index]
         resources :list_items, only: [:index]
+        resources :items, only: [:index]
+        resources :sections, only: [:index] do
+        end
       end
       get '/lists/:list_id/complete_list_items', to: 'list_items#complete', as: 'complete_list_items'
+      get '/lists/:list_id/sections/:section_id/list_items', to: 'list_items#by_section', as: 'list_items_by_section'
 
       resources :items, only: [:create, :index, :show]
 
