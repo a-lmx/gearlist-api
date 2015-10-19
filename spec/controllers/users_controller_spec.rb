@@ -14,12 +14,13 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     end
 
     context "the returned JSON object" do
-      it "has an `user` wrapper" do
-        expect(@user.keys).to eq ["user"]
-      end
+      # it "has an `user` wrapper" do
+      #   expect(@user.keys).to eq ["user"]
+      # end
 
       it "includes id, name, category, and weight" do
-        expect(@user["user"].keys).to eq [
+        expect(@user.keys).to eq [
+        # expect(@user["user"].keys).to eq [
           "id",
           "username", 
           "uid"
