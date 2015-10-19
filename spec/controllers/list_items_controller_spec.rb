@@ -8,8 +8,9 @@ RSpec.describe Api::V1::ListItemsController, type: :controller do
         list_item2 = create :list_item, list_id: 2, item_id: 4, quantity: 3
 
         get :index
-        list_items_wrapper = JSON.parse response.body
-        @list_items = list_items_wrapper["list_items"]
+        @list_items = JSON.parse response.body
+        # list_items_wrapper = JSON.parse response.body
+        # @list_items = list_items_wrapper["list_items"]
       end
 
       it "returns http success" do
@@ -26,7 +27,8 @@ RSpec.describe Api::V1::ListItemsController, type: :controller do
             "id",
             "list_id", 
             "item_id", 
-            "quantity"
+            "quantity",
+            "section"
             ]
         end
       end
@@ -40,8 +42,9 @@ RSpec.describe Api::V1::ListItemsController, type: :controller do
         list_item2 = create :list_item, list_id: list.id + 1, item_id: 4, quantity: 3
 
         get :index, list_id: list.id
-        list_items_wrapper = JSON.parse response.body
-        @list_items = list_items_wrapper["list_items"]
+        @list_items = JSON.parse response.body
+        # list_items_wrapper = JSON.parse response.body
+        # @list_items = list_items_wrapper["list_items"]
       end
 
       it "returns http success" do
@@ -70,16 +73,18 @@ RSpec.describe Api::V1::ListItemsController, type: :controller do
     end
 
     context "the returned JSON object" do
-      it "has an `list_item` wrapper" do
-        expect(@list_item.keys).to eq ["list_item"]
-      end
+      # it "has an `list_item` wrapper" do
+      #   expect(@list_item.keys).to eq ["list_item"]
+      # end
 
       it "includes id, name, category, and weight" do
-        expect(@list_item["list_item"].keys).to eq [
+        expect(@list_item.keys).to eq [
+        # expect(@list_item["list_item"].keys).to eq [
           "id",
           "list_id", 
           "item_id", 
-          "quantity"
+          "quantity",
+          "section"
           ]
       end
     end
@@ -90,7 +95,8 @@ RSpec.describe Api::V1::ListItemsController, type: :controller do
       {
         list_id: 1, 
         item_id: 3, 
-        quantity: 10
+        quantity: 10,
+        section: "packing"
         } 
       }
 

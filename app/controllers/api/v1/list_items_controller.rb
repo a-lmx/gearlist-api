@@ -33,7 +33,7 @@ module Api
       private
 
       def list_item_params
-        params.require(:list_item).permit(:list_id, :item_id, :quantity)
+        params.require(:list_item).permit(:list_id, :item_id, :quantity, :section)
       end
     end
   end
