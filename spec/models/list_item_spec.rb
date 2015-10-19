@@ -6,7 +6,8 @@ RSpec.describe ListItem, type: :model do
   describe "validations" do
     [
       :item_id, 
-      :list_id, 
+      :list_id,
+      :section 
     ].each do |property|
       it "requires a #{property}" do
         list_item[property] = nil
