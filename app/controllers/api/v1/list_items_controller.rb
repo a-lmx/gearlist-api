@@ -14,9 +14,17 @@ module Api
 
       def complete
         list = find_list
-        list_items = list.list_items.order(:section)
+        list_items = list.list_items.order(:section_id)
 
         render json: list_items, each_serializer: CompleteListItemSerializer
+      end
+
+      def by_section
+        list = find_list
+        section = Section.find(params[:section_id])
+        list_items = list.list_items.where(section: section)
+
+        render json: list_items, each_serializer: CompleteListItemSerializer, status: :ok
       end
 
       def show
