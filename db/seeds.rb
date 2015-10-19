@@ -142,5 +142,3 @@ sections = [
 sections.each do |section|
   Section.create(section)
 end
-
-
