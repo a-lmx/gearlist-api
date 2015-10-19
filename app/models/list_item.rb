@@ -3,5 +3,5 @@ class ListItem < ActiveRecord::Base
   belongs_to :list
   belongs_to :item
   # Validations ----------------------------------------------------------------
-  validates :list_id, :item_id, presence: true
+  validates :list_id, :item_id, :section, presence: true
 end
