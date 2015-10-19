@@ -16,7 +16,6 @@ module Api
         list = find_list
         list_items = list.list_items.order(:section)
 
-
         render json: list_items, each_serializer: CompleteListItemSerializer
       end
 
