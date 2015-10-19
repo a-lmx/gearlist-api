@@ -3,7 +3,7 @@ FactoryGirl.define do
     item_id 1
     list_id 1
     quantity 1
-    section "packing"
+    section_id 1
   end
 
 end

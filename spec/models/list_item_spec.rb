@@ -7,7 +7,7 @@ RSpec.describe ListItem, type: :model do
     [
       :item_id, 
       :list_id,
-      :section 
+      :section_id 
     ].each do |property|
       it "requires a #{property}" do
         list_item[property] = nil
