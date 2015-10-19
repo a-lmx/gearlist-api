@@ -8,8 +8,9 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
         item2 = create :item, name: "burn"
 
         get :index
-        items_wrapper = JSON.parse response.body
-        @items = items_wrapper["items"]
+        @items = JSON.parse response.body
+        # items_wrapper = JSON.parse response.body
+        # @items = items_wrapper["items"]
       end
 
       it "returns http success" do
@@ -46,8 +47,9 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
         list_item2 = create :list_item, item_id: item2.id, list_id: list.id + 1
 
         get :index, list_id: list.id
-        items_wrapper = JSON.parse response.body
-        @items = items_wrapper["items"]
+        @items = JSON.parse response.body
+        # items_wrapper = JSON.parse response.body
+        # @items = items_wrapper["items"]
       end
 
       it "returns http success" do
@@ -76,12 +78,13 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
     end
 
     context "the returned JSON object" do
-      it "has an `item` wrapper" do
-        expect(@item.keys).to eq ["item"]
-      end
+      # it "has an `item` wrapper" do
+      #   expect(@item.keys).to eq ["item"]
+      # end
 
       it "includes id, name, category, and weight" do
-        expect(@item["item"].keys).to eq [
+        expect(@item.keys).to eq [
+        # expect(@item["item"].keys).to eq [
           "id",
           "name", 
           "category", 
