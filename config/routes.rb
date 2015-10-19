@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         resources :items, only: [:index]
         resources :list_items, only: [:index]
       end
+      get '/lists/:list_id/complete_list_items', to: 'list_items#complete', as: 'complete_list_items'
 
       resources :items, only: [:create, :index, :show]
 
