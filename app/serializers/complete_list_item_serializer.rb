@@ -9,6 +9,10 @@ class CompleteListItemSerializer < ActiveModel::Serializer
     object.item.category
   end
 
+  def section
+    object.section.name
+  end
+
   def weight
     object.item.weight
   end
