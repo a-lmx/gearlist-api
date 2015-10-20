@@ -1,8 +1,6 @@
 FactoryGirl.define do
-  factory :list_item do
-    item_id 1
+  factory :list_section do
     list_id 1
-    quantity 1
     section_id 1
   end
 

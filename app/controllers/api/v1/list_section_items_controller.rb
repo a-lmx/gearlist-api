@@ -1,12 +1,12 @@
 module Api
   module V1
-    class ListItemsController < ApplicationController
+    class ListSectionItemsController < ApplicationController
       def index
         if params[:list_id]
           list = find_list
-          list_items = list.list_items
+          list_items = list.list_section_items
         else
-          list_items = ListItem.all
+          list_items = ListSectionItem.all
         end
 
         render json: list_items, status: :ok
@@ -28,18 +28,18 @@ module Api
       end
 
       def show
-        list_item = ListItem.find(params[:id])
+        list_item = ListSectionItem.find(params[:id])
         render json: list_item
       end
 
       def create
-        ListItem.create(list_item_params)
+        ListSectionItem.create(list_item_params)
 
         render json: { message: "You created a list_item." }, status: 204
       end
 
       def destroy
-        list_item = ListItem.find_by(id: params[:id])
+        list_item = ListSectionItem.find_by(id: params[:id])
         list_item.destroy
 
         render json: { message: "You destroyed a list_item.", status: 204 }
@@ -52,7 +52,7 @@ module Api
       end
 
       def list_item_params
-        params.require(:list_item).permit(:list_id, :item_id, :quantity, :section)
+        params.require(:list_section_item).permit(:list_section_id, :item_id, :quantity)
       end
     end
   end
