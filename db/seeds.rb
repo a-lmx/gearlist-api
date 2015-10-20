@@ -49,15 +49,20 @@ items.each do |item|
 end
 
 lists = [
-  { name: "John Muir Trail 2013", 
+  { name: "John Muir Trail 2013",
+    description: "Gear for solo thru-hike of JMT in August 2013. Pretty happy with choices; would do warmer bag next time.", 
     user_id: 1 },
   { name: "JMT section 2012", 
+    description: "Heavy gear used as half of couple on JMT section from Happy Valley to Reds Meadow on the JMT in 2012.", 
     user_id: 2 },
   { name: "Pacific Crest Trail 2014", 
+    description: "Ultra-light gear used on successful solo thru-hike in 2014.", 
     user_id: 1 },
   { name: "Appalachian Trail 2010", 
+    description: "Lightweight kit used on successful thru-hike in 2013.", 
     user_id: 3 },
   { name: "Winter Backpacking", 
+    description: "Great kit for winter camping in the North Cascades. Used in 2011, 2012, and 2014.", 
     user_id: 2 },
 ]
 
