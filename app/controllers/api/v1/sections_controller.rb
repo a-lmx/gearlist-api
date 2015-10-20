@@ -9,7 +9,7 @@ module Api
           @sections = Sections.all
         end
 
-        render json: @sections, status: :ok
+        render json: @sections, each_serializer: SectionSerializer, status: :ok
       end
     end
   end
