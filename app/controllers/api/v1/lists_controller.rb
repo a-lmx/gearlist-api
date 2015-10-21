@@ -24,9 +24,12 @@ module Api
       end
 
       def create
-        List.create(list_params)
-
-        render json: { message: "You created a list." }, status: 204
+        list = List.create(list_params)
+        if list.save
+          render json: { message: { success: "You created a list." } }, status: 201
+        else
+          render json: { message: { failure: "Something went wrong." } }, status: 400
+        end
       end
 
       private
@@ -36,7 +39,7 @@ module Api
       end
 
       def list_params
-        params.require(:list).permit(:user_id, :name)
+        params.require(:list).permit(:user_id, :name, :description)
       end
     end
   end
