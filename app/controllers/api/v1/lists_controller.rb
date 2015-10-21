@@ -28,14 +28,17 @@ module Api
 
         if list.save
           code = 201
-          message = { success: "You created a list." }
+          contents = { 
+            success: "You created a list.",
+            list_id: list.id
+          }
           location = api_v1_list_path(list)
         else
           code = 400
-          message = { failure: "Something went wrong." }
+          contents = { failure: "Something went wrong." }
         end
 
-        render json: message, status: code, location: location
+        render json: contents, status: code, location: location
         # get big object from client, parse into list object and list of item objects
         # => create necessary items, list_sections, list_section_items
       end
