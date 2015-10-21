@@ -1,9 +1,13 @@
 class SectionSerializer < ActiveModel::Serializer
   attributes :id, :name
 
-  has_many :list_items, serializer: CompleteListItemSerializer
+  has_many :list_section_items, serializer: CompleteListSectionItemSerializer
 
-  def list_items
-    object.list_items
+  def name
+    object.section.name
+  end
+
+  def list_section_items
+    object.list_section_items
   end
 end

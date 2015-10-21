@@ -1,5 +1,5 @@
-class CompleteListItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :category, :quantity, :section, :weight
+class CompleteListSectionItemSerializer < ActiveModel::Serializer
+  attributes :id, :name, :category, :quantity, :weight
 
   def name
     object.item.name
