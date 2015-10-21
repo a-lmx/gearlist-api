@@ -25,11 +25,19 @@ module Api
 
       def create
         list = List.create(list_params)
+
         if list.save
-          render json: { message: { success: "You created a list." } }, status: 201
+          code = 201
+          message = { success: "You created a list." }
+          location = api_v1_list_path(list)
         else
-          render json: { message: { failure: "Something went wrong." } }, status: 400
+          code = 400
+          message = { failure: "Something went wrong." }
         end
+
+        render json: message, status: code, location: location
+        # get big object from client, parse into list object and list of item objects
+        # => create necessary items, list_sections, list_section_items
       end
 
       private
