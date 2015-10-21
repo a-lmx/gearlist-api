@@ -1,15 +1,12 @@
 module Api
   module V1
     class ListSectionItemsController < ApplicationController
-      def index
-        if params[:list_id]
-          list = find_list
-          list_items = list.list_section_items
-        else
-          list_items = ListSectionItem.all
-        end
+      before_action :find_section, only: [:index]
 
-        render json: list_items, status: :ok
+      def index
+        list_section_items = @section ? @section.list_section_items : ListSectionItem.all
+        
+        render json: list_section_items, each_serializer: CompleteListSectionItemSerializer, status: :ok
       end
 
       def complete
@@ -24,7 +21,7 @@ module Api
         section = Section.find(params[:section_id])
         list_items = list.list_items.where(section: section)
 
-        render json: list_items, each_serializer: CompleteListItemSerializer, status: :ok
+        render json: list_items, each_serializer: CompleteListSectionItemSerializer, status: :ok
       end
 
       def show
@@ -47,9 +44,9 @@ module Api
 
       private
 
-      def find_list
-        List.find(params[:list_id])
-      end
+      # def find_list
+      #   List.find(params[:list_id])
+      # end
 
       def list_item_params
         params.require(:list_section_item).permit(:list_section_id, :item_id, :quantity)
