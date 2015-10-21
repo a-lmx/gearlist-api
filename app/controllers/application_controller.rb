@@ -1,7 +1,12 @@
 class ApplicationController < ActionController::API
-  private
   
+  private
+
   def find_list
-    List.find(params[:id] || params[:list_id])
+    @list = List.find_by(id: params[:id] || params[:list_id])
+  end
+
+  def find_section
+    @section = ListSection.find_by(id: params[:id] || params[:list_section_id])
   end
 end
