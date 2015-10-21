@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'list_sections/index'
 
-  namespace :api do
+  namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :users, only: [:show] do
         resources :lists, only: [:index]
