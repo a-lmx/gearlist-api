@@ -5,8 +5,8 @@ RSpec.describe User, type: :model do
   
   describe "validations" do
     [
-      :uid, 
-      :username
+      :username,
+      :email
     ].each do |property|
       it "requires a #{property}" do
         user[property] = nil

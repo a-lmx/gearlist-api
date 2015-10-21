@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
-    uid "12345678"
     username "eggplant"
+    email "eggplant@woohoo.com"
   end
 
 end
