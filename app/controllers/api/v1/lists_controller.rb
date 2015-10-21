@@ -12,6 +12,12 @@ module Api
         render json: @lists, status: :ok
       end
 
+      def items_by_section
+        @list = find_list
+
+        render json: @list, serializer: CompleteListSerializer, status: :ok
+      end
+
       def show
         @list = List.find(params[:id])
         render json: @list
@@ -24,6 +30,10 @@ module Api
       end
 
       private
+
+      def find_list
+        List.find(params[:id] || params[:list_id])
+      end
 
       def list_params
         params.require(:list).permit(:user_id, :name)
