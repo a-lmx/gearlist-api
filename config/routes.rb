@@ -12,7 +12,7 @@ Rails.application.routes.draw do
         end
       end
       get '/lists/:list_id/complete_list_items', to: 'list_items#complete', as: 'complete_list_items'
-      get '/lists/:list_id/sections/:section_id/list_items', to: 'list_items#by_section', as: 'list_items_by_section'
+      get '/lists/:list_id/items_by_section', to: 'lists#items_by_section', as: 'items_by_section'
 
       resources :items, only: [:create, :index, :show]
 
