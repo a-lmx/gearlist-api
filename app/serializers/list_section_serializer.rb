@@ -1,7 +1,7 @@
 class ListSectionSerializer < ActiveModel::Serializer
-  attributes :id, :list_id, :section_name
+  attributes :id, :list_id, :name
 
-  def section_name
+  def name
     object.section.name
   end
 end
