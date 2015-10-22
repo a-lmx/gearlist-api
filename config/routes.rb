@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get 'list-sections/:list_section_id/items', to: 'list_section_items#index', as: 'complete_list_items'
 
       resources :items, only: [:create, :index, :show]
-
+      resources :list_section_items, only: [:show]
     end
   end
 end
