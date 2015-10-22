@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'rails', '4.2.4'
+gem 'omniauth-oauth2', '1.3.1'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
@@ -14,7 +15,7 @@ gem 'spring', :group => :development
 gem 'pg'
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+# gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   # allow cross-origin resource sharing
