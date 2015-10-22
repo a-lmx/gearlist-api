@@ -1,10 +1,13 @@
 users = [
   { uid: "1234", 
-    username: "Grizzly" },
+    username: "Grizzly",
+    provider: "google-oauth2" },
   { uid: "2345", 
-    username: "Slow Poke" },
+    username: "Slow Poke",
+    provider: "google-oauth2" },
   { uid: "3456", 
-    username: "Fluff Ball" }
+    username: "Fluff Ball",
+    provider: "google-oauth2" }
 ]
 
 users.each do |user|
