@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'list_sections/index'
 
-  namespace :api, defaults: { format: :json } do
+  namespace :api do
     namespace :v1 do
       resources :users, only: [:show] do
         resources :lists, only: [:index]
@@ -16,6 +16,10 @@ Rails.application.routes.draw do
 
       resources :items, only: [:create, :index, :show]
       resources :list_section_items, only: [:show]
+
     end
   end
+      root to: 'sessions#new'
+      resources :sessions, only: :index
+      get "/auth/:provider/callback" => 'sessions#create'
 end
