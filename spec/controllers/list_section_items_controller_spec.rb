@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::ListItemsController, type: :controller do
+RSpec.describe Api::V1::ListSectionItemsController, type: :controller do
   describe "GET #index" do
     context "no list_id" do
       before :each do

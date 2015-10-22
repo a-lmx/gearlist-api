@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ListSectionsController, type: :controller do
+RSpec.describe Api::V1::ListSectionsController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do

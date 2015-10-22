@@ -24,9 +24,23 @@ module Api
       end
 
       def create
-        List.create(list_params)
+        list = List.create(list_params)
 
-        render json: { message: "You created a list." }, status: 204
+        if list.save
+          code = 201
+          contents = { 
+            success: "You created a list.",
+            list_id: list.id
+          }
+          location = api_v1_list_path(list)
+        else
+          code = 400
+          contents = { failure: "Something went wrong." }
+        end
+
+        render json: contents, status: code, location: location
+        # get big object from client, parse into list object and list of item objects
+        # => create necessary items, list_sections, list_section_items
       end
 
       private
@@ -36,7 +50,7 @@ module Api
       end
 
       def list_params
-        params.require(:list).permit(:user_id, :name)
+        params.require(:list).permit(:user_id, :name, :description)
       end
     end
   end
