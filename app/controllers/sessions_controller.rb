@@ -4,6 +4,9 @@ class SessionsController < ApplicationController
   end
  
   def create
+    # raise
     @auth = request.env['omniauth.auth']['credentials']
+    # redirect_to root_path
+    render :create
   end
 end
