@@ -7,9 +7,8 @@ module Api
         provider = params["provider"]
 
         user = User.find_or_create_by_omniauth(id, name, provider)
-        user.set_token
 
-        render  json: { user_id: user.id, token: user.token },
+        render  json: { userId: user.id, token: user.token },
                 status: 200         
       end
     end
