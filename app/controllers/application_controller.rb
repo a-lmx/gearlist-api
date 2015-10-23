@@ -7,8 +7,13 @@ class ApplicationController < ActionController::API
 
   def restrict_access
     authenticate_or_request_with_http_token do |token, options|
+      @current_user = User.find_by(token: token)
       User.exists?(token: token)
     end
+  end
+
+  def verify_access(user)
+    user == @current_user
   end
 
   def find_list
