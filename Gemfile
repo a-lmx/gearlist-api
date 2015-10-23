@@ -3,10 +3,6 @@ source 'https://rubygems.org'
 gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'rails', '4.2.4'
-gem 'omniauth-oauth2', '1.3.1'
-gem 'omniauth'
-gem 'omniauth-google-oauth2'
-
 gem 'rails-api'
 gem 'active_model_serializers', '~> 0.10.x'
 
