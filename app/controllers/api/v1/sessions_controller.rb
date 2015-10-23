@@ -1,6 +1,8 @@
 module Api
   module V1
-    class SessionsController < ApplicationController      
+    class SessionsController < ApplicationController
+      skip_before_action :restrict_access
+
       def create
         id = params["id"]
         name = params["name"]
