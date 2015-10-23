@@ -20,7 +20,4 @@ Rails.application.routes.draw do
       post '/login', to: 'sessions#create'
     end
   end
-      # root to: 'sessions#new'
-      # resources :sessions, only: :index
-      # get "/auth/:provider/callback" => 'sessions#create'
 end
