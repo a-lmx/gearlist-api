@@ -18,53 +18,61 @@ module Api
         list_id = params["list_id"]
         list = List.find_by(id: list_id)
 
-        # find section
-        section_name = params["section"]
-        section = Section.find_by(name: section_name)
+        logger.debug("@current_user_id: #{@current_user.id}")
+        logger.debug("list_owner_id: #{list.user.id}")
+        # verify list owner
+        unless verify_access(list.user)
+          render json: { failure: "You can only add items to your own lists." }, status: 401
+        else
+          # find section
+          # TODO add find_or_create code
+          section_name = params["section"]
+          section = Section.find_by(name: section_name)
 
-        # find or create list_section
-        list_section = list.list_sections.find_by(section_id: section.id)
-        unless list_section
-          list_section = ListSection.create(
-            list_id: list.id, 
-            section_id: section.id
-          )
-        end
+          # find or create list_sections
+          list_section = list.list_sections.find_by(section_id: section.id)
+          unless list_section
+            list_section = ListSection.create(
+              list_id: list.id, 
+              section_id: section.id
+            )
+          end
 
-        # find or create item
-        new_item = Item.find_by(
-          name: item["name"], 
-          weight: item["weight"], 
-          category: item["category"])
-        unless new_item
-          new_item = Item.create(
+          # find or create item
+          new_item = Item.find_by(
             name: item["name"], 
             weight: item["weight"], 
             category: item["category"])
-        end
+          unless new_item
+            new_item = Item.create(
+              name: item["name"], 
+              weight: item["weight"], 
+              category: item["category"])
+          end
 
-        # create list_section_item
-        list_section_item = ListSectionItem.create(
-          list_section_id: list_section.id, 
-          item_id: new_item.id, 
-          quantity: params["quantity"]
-        )
-        if list_section_item.save
-          code = 201
-          contents = {
-            success: "You added an item to your list.",
-            list_section_item_id: list_section_item.id
-          }
-          location = api_v1_list_section_item_path(list_section_item)
-        else
-          code = 400
-          contents = { failure: "Something went wrong." }
+          # create list_section_item
+          list_section_item = ListSectionItem.create(
+            list_section_id: list_section.id, 
+            item_id: new_item.id, 
+            quantity: params["quantity"]
+          )
+          if list_section_item.save
+            code = 201
+            contents = {
+              success: "You added an item to your list.",
+              list_section_item_id: list_section_item.id
+            }
+            location = api_v1_list_section_item_path(list_section_item)
+          else
+            code = 400
+            contents = { failure: "Something went wrong." }
+          end
+          ### check for pre-existing item?
+          # render response
+          render  json: contents, 
+                  status: code, 
+                  location: location
         end
-        ### check for pre-existing item?
-        # render response
-        render  json: contents, 
-                status: code, 
-                location: location
       end
 
       ### From ListsController
