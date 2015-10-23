@@ -7,4 +7,6 @@ class List < ActiveRecord::Base
   belongs_to  :user
   # Validations ----------------------------------------------------------------
   validates :name, :user_id, presence: true
+  # Scopes ---------------------------------------------------------------------
+  scope :published, -> { where(secret: false) }
 end
