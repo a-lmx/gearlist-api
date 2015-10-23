@@ -17,9 +17,10 @@ Rails.application.routes.draw do
       resources :items, only: [:create, :index, :show]
       resources :list_section_items, only: [:show]
 
+      post '/login', to: 'sessions#create'
     end
   end
-      root to: 'sessions#new'
-      resources :sessions, only: :index
-      get "/auth/:provider/callback" => 'sessions#create'
+      # root to: 'sessions#new'
+      # resources :sessions, only: :index
+      # get "/auth/:provider/callback" => 'sessions#create'
 end
