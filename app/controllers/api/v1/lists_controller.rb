@@ -6,7 +6,7 @@ module Api
           user = User.find(params[:user_id]) 
           @lists = user.lists
         else
-          @lists = List.all
+          @lists = List.all.published
         end
 
         render json: @lists, status: :ok
