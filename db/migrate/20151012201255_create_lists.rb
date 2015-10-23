@@ -4,6 +4,7 @@ class CreateLists < ActiveRecord::Migration
       t.string :name
       t.string :description
       t.integer :user_id
+      t.boolean :secret, null: false, default: false
 
       t.timestamps null: false
     end

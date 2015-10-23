@@ -43,8 +43,9 @@ ActiveRecord::Schema.define(version: 20151020230552) do
     t.string   "name"
     t.string   "description"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "secret",      default: false, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "sections", force: :cascade do |t|
