@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20151020230552) do
     t.string   "username"
     t.string   "uid"
     t.string   "provider"
+    t.string   "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
