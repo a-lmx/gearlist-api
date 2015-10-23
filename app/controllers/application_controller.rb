@@ -6,12 +6,6 @@ class ApplicationController < ActionController::API
   private
 
   def restrict_access
-    # token = request.headers["Token"]
-
-    # if token == nil || !User.find_by(token: token)
-    #   render json: { error: 'Bad Token'}, status: 401
-    # end
-
     authenticate_or_request_with_http_token do |token, options|
       User.exists?(token: token)
     end
