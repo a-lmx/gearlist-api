@@ -50,7 +50,7 @@ module Api
       end
 
       def list_params
-        params.require(:list).permit(:user_id, :name, :description)
+        params.require(:list).permit(:user_id, :name, :description, :secret)
       end
     end
   end
