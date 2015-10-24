@@ -45,22 +45,27 @@ module Api
 
       def update
         @list = List.find_by(id: list_params[:id])
-        @list.update(list_params)
 
-        if @list.save
-          code = 200
-          contents = {
-            success: 'You updated this list.',
-            list_id: @list.id
-          }
+        unless verify_access(@list.user)
+          render json: { failure: "You can only add items to your own lists." }, status: 401
         else
-          code = 400,
-          contents = {
-            failure: 'Something went wrong.'
-          }
-        end
+          @list.update(list_params)
 
-        render json: contents, status: code
+          if @list.save
+            code = 200
+            contents = {
+              success: 'You updated this list.',
+              list_id: @list.id
+            }
+          else
+            code = 400,
+            contents = {
+              failure: 'Something went wrong.'
+            }
+          end
+
+          render json: contents, status: code
+        end
       end
 
       private
