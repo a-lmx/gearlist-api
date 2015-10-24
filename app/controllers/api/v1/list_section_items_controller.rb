@@ -12,6 +12,13 @@ module Api
                 status: :ok
       end
 
+      def show
+        list_section_item = ListSectionItem.find(params[:id])
+        render  json: list_section_item, 
+                serializer: CompleteListSectionItemSerializer,
+                status: :ok
+      end
+
       def add_items
         item = params["item"]
         # find list
@@ -75,27 +82,6 @@ module Api
         end
       end
 
-      ### From ListsController
-      # def create
-      #   list = List.create(list_params)
-
-      #   if list.save
-      #     code = 201
-      #     contents = { 
-      #       success: "You created a list.",
-      #       list_id: list.id
-      #     }
-      #     location = api_v1_list_path(list)
-      #   else
-      #     code = 400
-      #     contents = { failure: "Something went wrong." }
-      #   end
-
-      #   render json: contents, status: code, location: location
-      #   # get big object from client, parse into list object and list of item objects
-      #   # => create necessary items, list_sections, list_section_items
-      # end
-
       # def complete
       #   list = find_list
       #   list_items = list.list_items.order(:section_id)
@@ -111,10 +97,6 @@ module Api
       #   render json: list_items, each_serializer: CompleteListSectionItemSerializer, status: :ok
       # end
 
-      # def show
-      #   list_item = ListSectionItem.find(params[:id])
-      #   render json: list_item
-      # end
 
       # def create
       #   ListSectionItem.create(list_item_params)
@@ -130,10 +112,6 @@ module Api
       # end
 
       private
-
-      # def find_list
-      #   List.find(params[:list_id])
-      # end
 
       def list_section_item_params
         params.require(:list_section_item).permit(:list_section_id, :item_id, :quantity)
