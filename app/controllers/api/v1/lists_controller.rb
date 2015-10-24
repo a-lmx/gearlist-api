@@ -35,22 +35,42 @@ module Api
           location = api_v1_list_path(list)
         else
           code = 400
-          contents = { failure: "Something went wrong." }
+          contents = { 
+            failure: "Something went wrong." 
+          }
         end
 
         render json: contents, status: code, location: location
-        # get big object from client, parse into list object and list of item objects
-        # => create necessary items, list_sections, list_section_items
+      end
+
+      def update
+        @list = List.find_by(id: list_params[:id])
+        @list.update(list_params)
+
+        if @list.save
+          code = 200
+          contents = {
+            success: 'You updated this list.',
+            list_id: @list.id
+          }
+        else
+          code = 400,
+          contents = {
+            failure: 'Something went wrong.'
+          }
+        end
+
+        render json: contents, status: code
       end
 
       private
 
       def find_list
-        List.find(params[:id] || params[:list_id])
+        @list = List.find(params[:id] || params[:list_id])
       end
 
       def list_params
-        params.require(:list).permit(:user_id, :name, :description, :secret)
+        params.require(:list).permit(:id, :user_id, :name, :description, :secret)
       end
     end
   end
