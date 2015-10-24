@@ -13,9 +13,10 @@ Rails.application.routes.draw do
       end
       
       get 'list-sections/:list_section_id/items', to: 'list_section_items#index', as: 'complete_list_items'
+      get 'items/:id', to: 'list_section_items#show'
 
-      resources :items, only: [:create, :index, :show]
-      resources :list_section_items, only: [:show]
+      # resources :items, only: [:create, :index, :show]
+      # resources :list_section_items, only: [:show]
 
       post '/login', to: 'sessions#create'
     end
