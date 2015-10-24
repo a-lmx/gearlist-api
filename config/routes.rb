@@ -7,7 +7,7 @@ Rails.application.routes.draw do
         resources :lists, only: [:index]
       end
 
-      resources :lists, only: [:index, :show, :create] do
+      resources :lists, only: [:index, :show, :create, :update] do
         get 'sections', to: 'list_sections#index'
         post 'items', to: 'list_section_items#add_items'
       end
