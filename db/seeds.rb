@@ -1,13 +1,16 @@
 users = [
   { uid: "1234", 
     username: "Grizzly",
-    provider: "google-oauth2" },
+    provider: "google_oauth2" },
   { uid: "2345", 
     username: "Slow Poke",
-    provider: "google-oauth2" },
+    provider: "google_oauth2" },
   { uid: "3456", 
     username: "Fluff Ball",
-    provider: "google-oauth2" }
+    provider: "google_oauth2" },
+  { uid: "110531353886002811917",
+    username: "Penguin GearList",
+    provider: "google_oauth2" }
 ]
 
 users.each do |user|
@@ -54,7 +57,7 @@ end
 lists = [
   { name: "John Muir Trail 2013",
     description: "Gear for solo thru-hike of JMT in August 2013. Pretty happy with choices; would do warmer bag next time.", 
-    user_id: 1,
+    user_id: 4,
     secret: true },
   { name: "JMT section 2012", 
     description: "Heavy gear used as half of couple on JMT section from Happy Valley to Reds Meadow on the JMT in 2012.", 
@@ -62,7 +65,7 @@ lists = [
     secret: false },
   { name: "Pacific Crest Trail 2014", 
     description: "Ultra-light gear used on successful solo thru-hike in 2014.", 
-    user_id: 1,
+    user_id: 4,
     secret: false },
   { name: "Appalachian Trail 2010", 
     description: "Lightweight kit used on successful thru-hike in 2013.", 
