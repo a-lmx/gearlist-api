@@ -1,5 +1,5 @@
 class CompleteListSectionItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :category, :quantity, :weight
+  attributes :id, :name, :category, :quantity, :weight, :section
 
   def name
     object.item.name
@@ -10,7 +10,7 @@ class CompleteListSectionItemSerializer < ActiveModel::Serializer
   end
 
   def section
-    object.section.name
+    object.list_section.section.name
   end
 
   def weight
