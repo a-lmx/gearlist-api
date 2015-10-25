@@ -88,54 +88,59 @@ module Api
         item = params['item']
         list_section_item = ListSectionItem.find(item['id'])
 
-        # check if quantity is the same
-        # => if not, update quantity
-        new_quantity = params['quantity']
-        unless list_section_item.quantity == new_quantity
-          list_section_item.quantity = new_quantity
-        end
-
-        # check if section is the same
-        # => if not, update LSI's list_section_id
-        new_section = Section.find_by(name: params['section'])
-        unless list_section_item.section == new_section
-          # find or create list_section
-          list_id = list_section_item.list.id
-          new_list_section = ListSection.where(
-            list_id: list_id, section_id: new_section.id
-          ).first_or_initialize
-          new_list_section.save
-          list_section_item.list_section_id = new_list_section.id
-        end
-
-        # find corresponding Item
-        # check if category, name, and weight are the same
-        # => if not, create new item with those values
-        # => and update LSI's item_id
-        new_item = Item.where(
-          name:     item['name'],
-          category: item['category'],
-          weight:   item['weight']
-        ).first_or_initialize
-        new_item.save
-        list_section_item.item_id = new_item.id
-
-        # save list_section_item
-        if list_section_item.save
-          code = 200
-          contents = {
-            success: "You updated this item in your list.",
-            list_section_item_id: list_section_item.id
-          }
-          location = api_v1_items_path(list_section_item)
+        # verify list_section_item owner
+        unless verify_access(list_section_item.list.user)
+          render json: { failure: "You can only update items in your own lists." }, status: 401
         else
-          code = 400
-          contents = { failure: "Something went wrong." }
+          # check if quantity is the same
+          # => if not, update quantity
+          new_quantity = params['quantity']
+          unless list_section_item.quantity == new_quantity
+            list_section_item.quantity = new_quantity
+          end
+
+          # check if section is the same
+          # => if not, update LSI's list_section_id
+          new_section = Section.find_by(name: params['section'])
+          unless list_section_item.section == new_section
+            # find or create list_section
+            list_id = list_section_item.list.id
+            new_list_section = ListSection.where(
+              list_id: list_id, section_id: new_section.id
+            ).first_or_initialize
+            new_list_section.save
+            list_section_item.list_section_id = new_list_section.id
+          end
+
+          # find corresponding Item
+          # check if category, name, and weight are the same
+          # => if not, create new item with those values
+          # => and update LSI's item_id
+          new_item = Item.where(
+            name:     item['name'],
+            category: item['category'],
+            weight:   item['weight']
+          ).first_or_initialize
+          new_item.save
+          list_section_item.item_id = new_item.id
+
+          # save list_section_item
+          if list_section_item.save
+            code = 200
+            contents = {
+              success: "You updated this item in your list.",
+              list_section_item_id: list_section_item.id
+            }
+            location = api_v1_items_path(list_section_item)
+          else
+            code = 400
+            contents = { failure: "Something went wrong." }
+          end
+          # render response
+          render  json: contents, 
+                  status: code, 
+                  location: location
         end
-        # render response
-        render  json: contents, 
-                status: code, 
-                location: location
       end
 
       # def complete
