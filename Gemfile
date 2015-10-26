@@ -15,7 +15,7 @@ gem 'pg'
 
 group :development, :test do
   # allow cross-origin resource sharing
-  gem 'rack-cors'
+  # gem 'rack-cors'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
