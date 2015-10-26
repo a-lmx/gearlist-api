@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
+# allow cross-origin resource sharing
+gem 'rack-cors', require: 'rack/cors'
+
 gem 'rails', '4.2.4'
 gem 'rails-api'
 gem 'active_model_serializers', '~> 0.10.x'
@@ -14,8 +17,6 @@ gem 'pg'
 # gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
-  # allow cross-origin resource sharing
-  # gem 'rack-cors'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

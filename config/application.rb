@@ -27,14 +27,14 @@ module GearlistApi
     config.api_only = false
 
     # Enable cross-origin resource sharing
-    # config.middleware.insert_before 'Rack::Runtime', 'Rack::Cors' do
-    #   allow do
-    #     origins '*'
-    #     resource '*',
-    #       headers: :any,
-    #       methods: [:get, :put, :post, :patch, :delete, :options]         
-    #   end
-    # end
+    config.middleware.insert_before 'Rack::Runtime', 'Rack::Cors' do
+      allow do
+        origins '*'
+        resource '*',
+          headers: :any,
+          methods: [:get, :put, :post, :patch, :delete, :options]         
+      end
+    end
 
   end
 end
