@@ -3,7 +3,6 @@ module Api
     class ListSectionItemsController < ApplicationController
       before_action :find_section, only: [:index]
 
-      # used by App
       def index
         list_section_items = @section ? @section.list_section_items : ListSectionItem.all
         
@@ -141,6 +140,30 @@ module Api
                   status: code, 
                   location: location
         end
+      end
+
+      def destroy
+        # find list_section_item
+        id = params[:list_section_item_id]
+        list_section_item = ListSectionItem.find_by(id: id)
+        # verify item owner
+        # delete list_section_item
+        if list_section_item
+          list_section_item.destroy
+          code = 200
+          contents = {
+            success: 'You deleted this item from your list.',
+            list_section_item_id: list_section_item.id
+          }
+        else
+          code = 400
+          contents = {
+            failure: 'Something went wrong.'
+          }
+        end
+        # render response
+        render  json: contents,
+                status: code
       end
 
       # def complete
