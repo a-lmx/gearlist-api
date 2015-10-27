@@ -11,6 +11,8 @@ Rails.application.routes.draw do
         get 'sections', to: 'list_sections#index'
         post 'items', to: 'list_section_items#add_items'
       end
+
+      resources :sections, only: [:index]
       
       get 'list-sections/:list_section_id/items', to: 'list_section_items#index', as: 'complete_list_items'
       get 'items/:id', to: 'list_section_items#show', as: 'items'
