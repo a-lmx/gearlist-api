@@ -82,14 +82,17 @@ lists.each do |list|
 end
 
 sections = [
-  { name: "packing" },
-  { name: "kitchen" },
-  { name: "shelter \& sleeping" },
-  { name: "clothing - worn" },
-  { name: "clothing - packed" },
-  { name: "survival \& tools" },
-  { name: "hygiene" },
-  { name: "luxury" }
+  { name: 'packing' },
+  { name: 'kitchen' },
+  { name: 'shelter \& sleeping' },
+  { name: 'clothing - worn' },
+  { name: 'clothing - packed' },
+  { name: 'survival \& tools' },
+  { name: 'hygiene' },
+  { name: 'luxury' },
+  { name: 'desert' },
+  { name: 'snow' },
+  { name: 'other'}
 ]
 
 sections.each do |section|
