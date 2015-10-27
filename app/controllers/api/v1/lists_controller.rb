@@ -68,6 +68,32 @@ module Api
         end
       end
 
+      def destroy
+        list = List.find_by(id: params[:id])
+        list_id = list.id
+
+        unless verify_access(list.user)
+          render json: { failure: "You can only delete your own lists." }, status: 401
+        else
+          list.destroy
+
+          if List.find_by(id: params[:id])
+            code = 400,
+            contents = {
+              failure: 'Something went wrong.'
+            }
+          else
+            code = 200
+            contents = {
+              success: 'You deleted that list.',
+              list_id: list_id
+            }
+          end
+
+          render json: contents, status: code
+        end
+      end
+
       private
 
       def find_list
