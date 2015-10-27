@@ -146,24 +146,28 @@ module Api
         # find list_section_item
         id = params[:list_section_item_id]
         list_section_item = ListSectionItem.find_by(id: id)
-        # verify item owner
-        # delete list_section_item
-        if list_section_item
-          list_section_item.destroy
-          code = 200
-          contents = {
-            success: 'You deleted this item from your list.',
-            list_section_item_id: list_section_item.id
-          }
-        else
-          code = 400
-          contents = {
-            failure: 'Something went wrong.'
-          }
+        # verify list_section_item owner
+        unless verify_access(list_section_item.list.user)
+          render json: { failure: "You can only delete items in your own lists." }, status: 401
+        else 
+          if list_section_item
+          # delete list_section_item
+            list_section_item.destroy
+            code = 200
+            contents = {
+              success: 'You deleted this item from your list.',
+              list_section_item_id: list_section_item.id
+            }
+          else
+            code = 400
+            contents = {
+              failure: 'Something went wrong.'
+            }
+          end
+          # render response
+          render  json: contents,
+                  status: code
         end
-        # render response
-        render  json: contents,
-                status: code
       end
 
       # def complete
