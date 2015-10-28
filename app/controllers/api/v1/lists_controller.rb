@@ -14,7 +14,6 @@ module Api
 
       def search
         query = params[:q]
-        logger.debug(query)
 
         @lists = List.search(query)
 
