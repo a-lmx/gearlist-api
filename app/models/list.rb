@@ -13,7 +13,6 @@ class List < ActiveRecord::Base
   scope :by_newest, -> { order(updated_at: :desc) }
 
   def self.search(query)
-    results = where("name like ?", "%#{query}%")
-    results.take if results.length > 0
+    results = where("name like ?", "%#{query}%").by_newest
   end
 end
