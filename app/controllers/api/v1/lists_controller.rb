@@ -4,7 +4,7 @@ module Api
       def index
         if params[:user_id]
           user = User.find(params[:user_id]) 
-          @lists = user.lists
+          @lists = user.lists.by_age
         else
           @lists = List.all.published
         end
