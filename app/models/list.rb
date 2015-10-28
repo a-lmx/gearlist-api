@@ -13,6 +13,15 @@ class List < ActiveRecord::Base
   scope :by_newest, -> { order(updated_at: :desc) }
 
   def self.search(query)
-    results = where("name like ?", "%#{query}%").by_newest
+    results = where(
+      "((name like ?) or description like ?) and secret = ?", "%#{query}%", "%#{query}%", false
+    ).by_newest
+  end
+
+  def self.feed(user_id)
+    where(
+      ["(secret = :secret1 and user_id = :user_id) or secret = :secret2", 
+       { secret1: true, user_id: user_id, secret2: false }]
+    ).by_newest
   end
 end
