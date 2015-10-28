@@ -6,7 +6,12 @@ module Api
           user = User.find(params[:user_id]) 
           @lists = user.lists.by_age
         else
-          @lists = List.all.published.by_newest
+          @lists = List.where(
+            [
+              "(secret = :secret1 and user_id = :user_id) or secret = :secret2", 
+              { secret1: true, user_id: @current_user.id, secret2: false }
+            ]
+          ).by_newest
         end
 
         render json: @lists, status: :ok
