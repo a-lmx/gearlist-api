@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :users, only: [:show] do
         resources :lists, only: [:index]
       end
+      get '/lists?search=:query', to: 'lists#search'
 
       resources :lists, only: [:index, :show, :create, :update, :destroy] do
         get 'sections', to: 'list_sections#index'
