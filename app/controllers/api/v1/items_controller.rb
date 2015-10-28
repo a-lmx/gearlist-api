@@ -14,7 +14,7 @@ module Api
 
       def show
         item = Item.find(params[:id])
-        render json: item
+        render json: item, status: :ok
       end
 
       def create
