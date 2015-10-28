@@ -23,6 +23,14 @@ module Api
         render json: { message: "You created a item." }, status: 204
       end
 
+      def search
+        query = params[:q]
+
+        @items = Item.search(query)
+
+        render json: @items, status: :ok
+      end
+
       private
 
       def item_params
