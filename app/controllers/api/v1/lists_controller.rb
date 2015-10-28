@@ -17,6 +17,15 @@ module Api
         render json: @lists, status: :ok
       end
 
+      def search
+        query = params[:q]
+        logger.debug(query)
+
+        @lists = List.search(query).by_newest
+
+        render json: @lists, status: :ok
+      end
+
       def items_by_section
         @list = find_list
 

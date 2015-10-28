@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  get 'list_sections/index'
-
   namespace :api do
     namespace :v1 do
       resources :users, only: [:show] do
         resources :lists, only: [:index]
       end
-      get '/lists?search=:query', to: 'lists#search'
+      
+      get '/lists/search', to: 'lists#search'
 
       resources :lists, only: [:index, :show, :create, :update, :destroy] do
         get 'sections', to: 'list_sections#index'
