@@ -21,7 +21,7 @@ module Api
         query = params[:q]
         logger.debug(query)
 
-        @lists = List.search(query).by_newest
+        @lists = List.search(query)
 
         render json: @lists, status: :ok
       end
