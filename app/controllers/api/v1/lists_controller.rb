@@ -6,7 +6,7 @@ module Api
           user = User.find(params[:user_id]) 
           @lists = user.lists.by_age
         else
-          @lists = List.all.published
+          @lists = List.all.published.by_newest
         end
 
         render json: @lists, status: :ok

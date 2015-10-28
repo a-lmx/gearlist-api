@@ -63,6 +63,7 @@ module Api
             quantity: params["quantity"]
           )
           if list_section_item.save
+            list.update(updated_at: Time.now)
             code = 201
             contents = {
               success: "You added an item to your list.",
@@ -125,6 +126,7 @@ module Api
 
           # save list_section_item
           if list_section_item.save
+            list.update(updated_at: Time.now)
             code = 200
             contents = {
               success: "You updated this item in your list.",
@@ -153,6 +155,7 @@ module Api
           if list_section_item
           # delete list_section_item
             list_section_item.destroy
+            list_section_item.list.update(updated_at: Time.now)
             code = 200
             contents = {
               success: 'You deleted this item from your list.',
