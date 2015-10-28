@@ -11,4 +11,9 @@ class List < ActiveRecord::Base
   scope :published, -> { where(secret: false) }
   scope :by_age, -> { order(:created_at) }
   scope :by_newest, -> { order(updated_at: :desc) }
+
+  def self.search(query)
+    results = where("name like ?", "%#{query}%")
+    results.take if results.length > 0
+  end
 end
