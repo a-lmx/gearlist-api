@@ -126,7 +126,7 @@ module Api
 
           # save list_section_item
           if list_section_item.save
-            list.update(updated_at: Time.now)
+            list_section_item.list.update(updated_at: Time.now)
             code = 200
             contents = {
               success: "You updated this item in your list.",
@@ -148,14 +148,23 @@ module Api
         # find list_section_item
         id = params[:list_section_item_id]
         list_section_item = ListSectionItem.find_by(id: id)
+        list_section = ListSection.find_by(id: list_section_item.list_section_id)
+        list = list_section.list
         # verify list_section_item owner
         unless verify_access(list_section_item.list.user)
           render json: { failure: "You can only delete items in your own lists." }, status: 401
         else 
           if list_section_item
-          # delete list_section_item
+            # take snapshot of number of list_section_items in list_section
+            list_section_count = list_section.list_section_items.count
+            # delete list_section_item
             list_section_item.destroy
-            list_section_item.list.update(updated_at: Time.now)
+            # see if section only had the one item
+            if list_section_count == 1
+              list_section.destroy
+            end
+
+            list.update(updated_at: Time.now)
             code = 200
             contents = {
               success: 'You deleted this item from your list.',
