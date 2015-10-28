@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :sections, only: [:index]
 
       get '/items/search', to: 'items#search'
+      get '/items/raw/:id', to: 'items#show'
       
       get 'list-sections/:list_section_id/items', to: 'list_section_items#index', as: 'complete_list_items'
       get 'items/:id', to: 'list_section_items#show', as: 'items'
