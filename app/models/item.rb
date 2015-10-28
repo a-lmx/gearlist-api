@@ -4,4 +4,8 @@ class Item < ActiveRecord::Base
   # Validations ----------------------------------------------------------------
   validates :name, :category, :weight, presence: true
   validates :weight, numericality: { only_integer: true, greater_than: 0 }
+
+  def self.search(query)
+    where("name like ?", "%#{query}%").limit(10)
+  end
 end
