@@ -84,10 +84,10 @@ end
 sections = [
   { name: 'packing' },
   { name: 'kitchen' },
-  { name: 'shelter \& sleeping' },
+  { name: 'shelter & sleeping' },
   { name: 'clothing - worn' },
   { name: 'clothing - packed' },
-  { name: 'survival \& tools' },
+  { name: 'survival & tools' },
   { name: 'hygiene' },
   { name: 'luxury' },
   { name: 'desert' },
