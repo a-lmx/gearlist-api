@@ -10,4 +10,5 @@ class List < ActiveRecord::Base
   # Scopes ---------------------------------------------------------------------
   scope :published, -> { where(secret: false) }
   scope :by_age, -> { order(:created_at) }
+  scope :by_newest, -> { order(updated_at: :desc) }
 end
