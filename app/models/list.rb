@@ -9,4 +9,5 @@ class List < ActiveRecord::Base
   validates :name, :user_id, presence: true
   # Scopes ---------------------------------------------------------------------
   scope :published, -> { where(secret: false) }
+  scope :by_age, -> { order(:created_at) }
 end
