@@ -154,7 +154,7 @@ module Api
 
       def destroy
         # find list_section_item
-        id = params[:list_section_item_id]
+        id = params[:id]
         list_section_item = ListSectionItem.find_by(id: id)
         list_section = ListSection.find_by(id: list_section_item.list_section_id)
         list = list_section.list
