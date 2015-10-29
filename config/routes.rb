@@ -22,7 +22,6 @@ Rails.application.routes.draw do
       put 'items/:id', to: 'list_section_items#update'
       delete 'items/:id', to: 'list_section_items#destroy'
 
-      # resources :items, only: [:show]
       resources :list_section_items, only: [:show]
 
       post '/login', to: 'sessions#create'
