@@ -103,7 +103,14 @@ module Api
           # => if not, update LSI's list_section_id
           new_section = Section.find_by(name: params['section'])
           unless list_section_item.section == new_section
-            # find or create list_section
+            # snapshot count of items in old list_section
+            old_list_section = list_section_item.list_section
+            old_list_section_count = old_list_section.list_section_items.count
+
+            # destroy old section if it only had the one item
+            old_list_section.destroy if old_list_section_count == 1
+
+            # create new list_section
             list_id = list_section_item.list.id
             new_list_section = ListSection.where(
               list_id: list_id, section_id: new_section.id
@@ -111,6 +118,7 @@ module Api
             new_list_section.save
             list_section_item.list_section_id = new_list_section.id
           end
+
 
           # find corresponding Item
           # check if category, name, and weight are the same
