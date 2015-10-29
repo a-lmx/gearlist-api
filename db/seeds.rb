@@ -56,10 +56,12 @@ items.each do |item|
   Item.create(item)
 end
 
-Dir.foreach('../seed_csvs') do |product_file|
+csv_directory = '/Users/arhx/projects/Ada/capstone/app/gearlist-api/db/seed_csvs'
+
+Dir.foreach(csv_directory) do |product_file|
   next if product_file == '.' or product_file == '..'
-  # do work on real items
-  CSV.foreach(product_file, encoding: "UTF-8", headers: true) do |row|
+
+  CSV.foreach(csv_directory + "/#{product_file}", encoding: "UTF-8", headers: true) do |row|
     row_hash = row.to_hash
     Item.create(row_hash)
   end
