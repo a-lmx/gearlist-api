@@ -41,17 +41,11 @@ module Api
             )
           end
 
-          # find or create item
-          new_item = Item.find_by(
+          new_item = Item.find_or_create_by(
             name: item["name"], 
             weight: item["weight"], 
-            category: item["category"])
-          unless new_item
-            new_item = Item.create(
-              name: item["name"], 
-              weight: item["weight"], 
-              category: item["category"])
-          end
+            category: item["category"]
+          )
 
           # create list_section_item
           list_section_item = ListSectionItem.create(
@@ -71,7 +65,7 @@ module Api
             code = 400
             contents = { failure: "Something went wrong." }
           end
-          ### check for pre-existing item?
+
           # render response
           render  json: contents, 
                   status: code, 
@@ -81,7 +75,7 @@ module Api
 
       def update
         # retrieve data from params
-        # find corresponding ListSectionItem (LSI)
+        # find corresponding list_section_item (LSI)
         item = params['item']
         list_section_item = ListSectionItem.find(item['id'])
 
