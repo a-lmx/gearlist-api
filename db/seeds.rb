@@ -144,115 +144,115 @@ list_section_items = [
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'packing').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "katabatic stuff sack").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'packing').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "ULA Circuit").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'packing').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "MSR micro-rocket, firestarter, case").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'kitchen').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "MSR iso-pro 4oz").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'kitchen').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "MSR Titan Kettle .85L").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'kitchen').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Katabatic palisade quilt 30°").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'shelter & sleeping').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "therm-a-rest z-lite small, minus 2 sections").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'shelter & sleeping').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "tarptent double rainbow & liner").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'shelter & sleeping').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Marmot crystalline").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'clothing - packed').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Mountain Hardware power-stretch gloves").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'clothing - packed').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "EMS Techwick").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'clothing - packed').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Smartwool microweight").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'clothing - packed').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Victorinox Swiss Army Climber knife").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'survival & tools').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Sawyer Squeeze plus 32oz bag").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'survival & tools').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "REI Aldervale Roll-up pants").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'clothing - worn').id 
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Smartwool Microweight V-Neck Longsleeve").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'clothing - worn').id 
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Keen Targee mid-height").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'clothing - worn').id 
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Canon Powershot S100, sock sleeve").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "John Muir Trail 2013").id,
       section_id: Section.find_by(name: 'luxury').id
-    ).id },
+    ).first.id },
 
   # List 2 - JMT 2012 Section
   { item_id: Item.find_by(name: "Hefty trash compactor bag").id,
@@ -260,115 +260,115 @@ list_section_items = [
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'packing').id 
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "katabatic stuff sack").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'packing').id 
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "ULA Circuit").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'packing').id 
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "MSR micro-rocket, firestarter, case").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'kitchen').id 
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "MSR iso-pro 4oz").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'kitchen').id 
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "MSR Titan Kettle .85L").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'kitchen').id 
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Katabatic palisade quilt 30°").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'shelter & sleeping').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "therm-a-rest z-lite small, minus 2 sections").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'shelter & sleeping').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "tarptent double rainbow & liner").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'shelter & sleeping').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Marmot crystalline").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'clothing - packed').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Mountain Hardware power-stretch gloves").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'clothing - packed').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "EMS Techwick").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'clothing - packed').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Smartwool microweight").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'clothing - packed').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Victorinox Swiss Army Climber knife").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'survival & tools').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Sawyer Squeeze plus 32oz bag").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'survival & tools').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "REI Aldervale Roll-up pants").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'clothing - worn').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Smartwool Microweight V-Neck Longsleeve").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'clothing - worn').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Brooks PureGrit 3 Trail-Running Shoes - Women's").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'clothing - worn').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Canon Powershot S100, sock sleeve").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "JMT section 2012").id,
       section_id: Section.find_by(name: 'luxury').id
-    ).id },
+    ).first.id },
 
   # List 5 - Winter
   { item_id: Item.find_by(name: "ULA Circuit").id,
@@ -376,37 +376,37 @@ list_section_items = [
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "Winter Backpacking").id,
       section_id: Section.find_by(name: 'packing').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Hefty trash compactor bag").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "Winter Backpacking").id,
       section_id: Section.find_by(name: 'packing').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Jetboil Zip Cooking System").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "Winter Backpacking").id,
       section_id: Section.find_by(name: 'kitchen').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Vargo Eagle Titanium spork").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "Winter Backpacking").id,
       section_id: Section.find_by(name: 'kitchen').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "western mountaineering versalite 10° - 5'6\"").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "Winter Backpacking").id,
       section_id: Section.find_by(name: 'shelter & sleeping').id
-    ).id },
+    ).first.id },
   { item_id: Item.find_by(name: "Therm-a-Rest NeoAir XTherm Sleeping Pad - Regular").id,
     quantity: 1,
     list_section_id: ListSection.where(
       list_id: List.find_by(name: "Winter Backpacking").id,
       section_id: Section.find_by(name: 'shelter & sleeping').id
-    ).id }
+    ).first.id }
 ]
 
 list_section_items.each do |list_section_item|
