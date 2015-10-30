@@ -19,7 +19,11 @@ users.each do |user|
   User.create(user)
 end
 
-csv_directory = '/Users/arhx/projects/Ada/capstone/app/gearlist-api/db/seed_csvs'
+if Rails.env.production?
+  csv_directory = '/var/app/current/db/seed_csvs'
+else
+  csv_directory = '/Users/arhx/projects/Ada/capstone/app/gearlist-api/db/seed_csvs'
+end
 
 Dir.foreach(csv_directory) do |product_file|
   next if product_file == '.' or product_file == '..'
