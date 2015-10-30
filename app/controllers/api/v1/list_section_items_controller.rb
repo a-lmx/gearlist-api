@@ -31,7 +31,6 @@ module Api
           render json: { failure: "You can only add items to your own lists." }, status: 401
         else
           # find section
-          # TODO add find_or_create code -- maybe?
           section_name = params["section"]
           section = Section.find_by(name: section_name)
 
