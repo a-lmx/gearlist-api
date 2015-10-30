@@ -24,8 +24,6 @@ module Api
         list_id = params["list_id"]
         list = List.find_by(id: list_id)
 
-        logger.debug("@current_user_id: #{@current_user.id}")
-        logger.debug("list_owner_id: #{list.user.id}")
         # verify list owner
         unless verify_access(list.user)
           render json: { failure: "You can only add items to your own lists." }, status: 401
